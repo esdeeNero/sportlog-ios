@@ -17,6 +17,7 @@ private struct Workout: Identifiable {
 }
 
 struct ContentView: View {
+    @State private var testCount = 0
     @State private var workouts = [
         Workout(title: "Силовая тренировка", detail: "Верх тела · 6 упражнений", duration: "45 мин", symbol: "dumbbell.fill"),
         Workout(title: "Лёгкий бег", detail: "Восстановительный темп", duration: "30 мин", symbol: "figure.run"),
@@ -32,6 +33,7 @@ struct ContentView: View {
                 VStack(alignment: .leading, spacing: 26) {
                     header
                     weeklyCard
+                    testCounterCard
                     weekStrip
                     workoutSection
                 }
@@ -102,6 +104,33 @@ struct ContentView: View {
         .foregroundStyle(.white)
         .padding(22)
         .background(SportStyle.ink, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
+    }
+
+    private var testCounterCard: some View {
+        HStack(spacing: 14) {
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Проверка на iPhone")
+                    .font(.system(size: 15, weight: .bold, design: .rounded))
+                    .foregroundStyle(SportStyle.ink)
+                Text("Нажми кнопку — счётчик изменится")
+                    .font(.system(size: 11, weight: .medium, design: .rounded))
+                    .foregroundStyle(SportStyle.muted)
+            }
+            Spacer(minLength: 4)
+            Button {
+                testCount += 1
+            } label: {
+                Label("\(testCount)", systemImage: "plus")
+                    .font(.system(size: 14, weight: .bold, design: .rounded))
+                    .foregroundStyle(SportStyle.ink)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
+                    .background(SportStyle.lime, in: Capsule())
+            }
+            .buttonStyle(.plain)
+        }
+        .padding(16)
+        .background(.white, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
     }
 
     private var weekStrip: some View {
