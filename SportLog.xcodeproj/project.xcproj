@@ -35,6 +35,7 @@
         "ASSETCATALOG_COMPILER_APPICON_NAME": "AppIcon",
         "CODE_SIGN_ENTITLEMENTS": "SportLog/SportLog.entitlements",
         "CODE_SIGN_STYLE": "Automatic",
+        "INFOPLIST_KEY_NSCameraUsageDescription": "Сфотографируйте еду для приблизительной оценки калорий и БЖУ на устройстве.",
         "CURRENT_PROJECT_VERSION": "1",
         "DEVELOPMENT_TEAM": "TF2G528J34",
         "ENABLE_APP_SANDBOX": "YES",

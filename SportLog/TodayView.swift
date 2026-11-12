@@ -60,6 +60,12 @@ struct TodayView: View {
                     Text(health.status).font(.caption).foregroundStyle(.secondary)
                     Button(health.loading ? "Обновляем…" : "Подключить / обновить Apple Health") { Task { await health.connect() } }.buttonStyle(.borderedProminent).disabled(health.loading)
                 }.logCard()
+                NavigationLink { FoodDiaryView() } label: {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Label("Сфотографировать еду", systemImage: "camera.fill").font(.title2.bold())
+                        Text("Оценить калории и БЖУ · исправить · сохранить").font(.subheadline).foregroundStyle(.secondary)
+                    }.logCard()
+                }.buttonStyle(.plain)
                 Text("Твой режим").font(.title2.bold())
                 NavigationLink { ReminderSettings() } label: {
                     VStack(alignment: .leading, spacing: 12) {
@@ -177,6 +183,7 @@ struct MoreView: View {
     var body: some View {
         List {
             Section("Твой SportLog") {
+                NavigationLink("Фото еды и дневник питания") { FoodDiaryView() }
                 NavigationLink("Календарь до 2028 года") { TrainingCalendar() }
                 NavigationLink("Видеотренировки") { TrainingLibrary() }
                 NavigationLink("Питание методом ладони") { PalmCalculator() }
